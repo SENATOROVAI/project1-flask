@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Участники</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            font-family: Tahoma, Geneva, sans-serif;
+        }
+
+        table td {
+            padding: 15px;
+        }
+
+        table th {
+            background-color: #54585d;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 13px;
+            border: 1px solid #54585d;
+        }
+
+        table tbody td {
+            color: #636363;
+            border: 1px solid #dddfe1;
+        }
+
+        table tbody tr {
+            background-color: #f9fafb;
+        }
+
+        table tbody tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Список участников {{ suffix }}</h1>
+<table>
+    <tr>
+        <th>Номер</th>
+        <th>ФИО</th>
+        <th>Команда</th>
+        <th>Тренер</th>
+        <th>Полных лет</th>
+        <th>Пол</th>
+    </tr>
+
+    {% for elem in data %}
+    <tr>
+        <td>{{ elem['child']['id'] }}</td>
+        <td>{{ elem['child']['fio'] }}</td>
+        <td><a href="/team/{{ elem['team']['id'] }}">{{ elem['team']['name'] }}</a></td>
+        <td><a href="/trainer/{{ elem['trainer']['id'] }}">{{ elem['trainer']['fio'] }}</a></td>
+        <td>{{ elem['child']['age'] }}</td>
+        <td>{{ elem['child']['gender'] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

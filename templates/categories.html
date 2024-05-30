@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список категорий</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            font-family: Tahoma, Geneva, sans-serif;
+        }
+
+        table td {
+            padding: 15px;
+        }
+
+        table th {
+            background-color: #54585d;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 13px;
+            border: 1px solid #54585d;
+        }
+
+        table tbody td {
+            color: #636363;
+            border: 1px solid #dddfe1;
+        }
+
+        table tbody tr {
+            background-color: #f9fafb;
+        }
+
+        table tbody tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Список категорий</h1>
+<table>
+    <tr>
+        <th>Номер</th>
+        <th>Название</th>
+        <th>Вес</th>
+        <th>Возраст</th>
+        <th>Пол</th>
+        <th>Сетка боев</th>
+    </tr>
+
+    {% for elem in data %}
+    <tr>
+        <td>{{ elem['category']['id'] }}</td>
+        <td>{{ elem['category']['name'] }}</td>
+        <td>{{ elem['category']['min_weight'] }} - {{ elem['category']['max_weight'] }}</td>
+        <td>{{ elem['category']['min_age'] }} - {{ elem['category']['max_age'] }}</td>
+        <td>{{ elem['category']['gender'] }}</td>
+        <td><a href="battle-net/{{ elem['category']['id'] }}">Сетка</a></td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
